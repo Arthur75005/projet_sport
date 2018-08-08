@@ -51,6 +51,11 @@ class User
      */
     private $phone;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_de_naissance;
+
     public function getId()
     {
         return $this->id;
@@ -136,6 +141,18 @@ class User
     public function setPhone(?int $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getDateDeNaissance(): ?\DateTimeInterface
+    {
+        return $this->date_de_naissance;
+    }
+
+    public function setDateDeNaissance(\DateTimeInterface $date_de_naissance): self
+    {
+        $this->date_de_naissance = $date_de_naissance;
 
         return $this;
     }
