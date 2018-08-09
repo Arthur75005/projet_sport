@@ -15,7 +15,7 @@ class HomeController extends Controller
 
 public function home()
 {
-    return $this->render('login/index.html.twig', [
+    return $this->render('base.html.twig', [
         'controller_name' => 'LoginController',
     ]);
 }
