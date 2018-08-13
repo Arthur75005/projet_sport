@@ -638,7 +638,7 @@ a.sign {
 /*-- banner-top --*/
 
 .banner-top {
-    background: url(../images/banner1.jpg) no-repeat 0px 0px;
+    background: url(../images/soccer.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -648,7 +648,7 @@ a.sign {
 }
 
 .banner-top1 {
-    background: url(../images/banner2.jpg) no-repeat 0px 0px;
+    background: url(../images/tennis.jpeg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -658,7 +658,7 @@ a.sign {
 }
 
 .banner-top2 {
-    background: url(../images/banner3.jpg) no-repeat 0px 0px;
+    background: url(../images/bike.jpeg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -668,7 +668,7 @@ a.sign {
 }
 
 .banner-top3 {
-    background: url(../images/banner4.jpg) no-repeat 0px 0px;
+    background: url(../images/running.jpeg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -703,7 +703,7 @@ a.sign {
 }
 
 .banner-info h3 {
-    font-size: 5em;
+    font-size: 2.5em;
     letter-spacing: 1px;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
     margin-bottom: 0.2em;
@@ -920,8 +920,8 @@ a.sign {
 }
 
 .callbacks_here a:after {
-    background: #ff3c41;
-    border: 2px solid #ff3c41;
+    background: #333;
+    border: 2px solid #fff;
     height: 14px;
     width: 14px;
 }
@@ -2648,7 +2648,7 @@ label.header_w3layouts_agile {
         padding: 14em 5em 0 2em;
     }
     .banner-info h3 {
-        font-size: 4em;
+        font-size: 2.5em;
     }
     .banner-info a {
         padding: 6px 14px;
@@ -2834,7 +2834,7 @@ label.header_w3layouts_agile {
         min-height: 590px;
     }
     .banner-info h3 {
-        font-size: 3.5em;
+        font-size: 2.5em;
     }
     .newsright input[type="email"] {
         width: 68%;
@@ -3009,7 +3009,7 @@ label.header_w3layouts_agile {
 
 @media(max-width:667px) {
     .banner-info h3 {
-        font-size: 3.2em;
+        font-size: 2.5em;
     }
     .test_img_info {
         text-align: left;
@@ -3055,7 +3055,7 @@ label.header_w3layouts_agile {
 
 @media(max-width:640px) {
     .banner-info h3 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
     h2.footer-logo {
         text-align: center;
@@ -3097,7 +3097,7 @@ label.header_w3layouts_agile {
         min-height: 455px;
     }
     .banner-info h3 {
-        font-size: 2.8em;
+        font-size: 2.5em;
     }
     .p-mask h4 {
         font-size: 1em;
