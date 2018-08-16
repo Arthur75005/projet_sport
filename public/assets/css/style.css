@@ -860,7 +860,6 @@ a.sign {
 }
 
 .rslides li {
-    -webkit-backface-visibility: hidden;
     position: absolute;
     display: none;
     width: 100%;
@@ -1102,8 +1101,9 @@ h3.sign {
 }
 
 .modal-header_w3layouts_agile .close {
-    float: right !important;
+    float: center !important;
     padding: 0.5em;
+    text-align: center;
 }
 
 .form-control:focus {

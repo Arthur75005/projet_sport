@@ -1,3 +1,25 @@
 index:
    path: /
-   controller: App\Controller\HomeController::home
+   controller: App\Controller\HomeController::index
+
+contact:
+  path: /contact
+  controller: App\Controller\ContactController::contact
+
+create_event:
+  path: /create_event
+  controller: App\Controller\Create_eventController::create_event
+
+join_event:
+  path: /join_event
+  controller: App\Controller\Join_eventController::join_event
+
+about:
+  path: /about
+  controller: App\Controller\AboutController::about
+
+
+
+
+
+

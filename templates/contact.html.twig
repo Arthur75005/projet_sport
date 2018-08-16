@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Fettle a sports Category Bootstrap responsive WebTemplate | Contact :: w3layouts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Fettle a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="{{ absolute_url(asset('assets/css/bootstrap.css')) }}" rel='stylesheet' type='text/css' />
+	<link href="{{ absolute_url(asset('assets/css/style.css')) }}" rel='stylesheet' type='text/css' />
+	<link href="{{ absolute_url(asset('assets/css/contact.css')) }}" rel='stylesheet' type='text/css' />
+	<link href="{{ absolute_url(asset('assets/css/font-awesome.css')) }}" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
+</head>
+
+<body>
+
+	<!--/top-bar-->
+	<div class="header_w3layouts_agile-main inner_banner">
+		<header class="header" id="home">
+			<!--/top-bar-->
+			<div class="top-bar">
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1>
+							<a class="navbar-brand" href="{{path('index')}}">Projet Sport
+								<span>Un évenement sportif à porter de main</span>
+							</a>
+						</h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<nav>
+							<ul class="top_nav">
+								<li>
+									<a href="index.html">Accueil</a>
+								</li>
+								<li>
+									<a href="about.html">Nous connaitre</a>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Evenements
+										<span class="fa fa-angle-down"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="{{ path('create_event')}}">Créez votre evenement</a>
+										</li>
+										<li>
+											<a href="services.html">Chercher un evenement</a>
+										</li>
+										
+									</ul>
+								</li>
+								
+								
+							</ul>
+						</nav>
+					</div>
+				</nav>
+			</div>
+			<!--//top-bar-->
+		</header>
+	</div>
+	<!--//inner_banner-->
+	<!--/short-->
+	<div class="services-breadcrumb">
+		<div class="inner_breadcrumb">
+
+			<ul class="short">
+				<li>
+					<a href="{{path('index')}}">Home</a>
+					<span>|</span>
+				</li>
+				<li>Contact</li>
+			</ul>
+		</div>
+	</div>
+	<!--//short-->
+	<!-- //inner_content -->
+
+	<!-- Modal1 -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header_w3layouts_agile">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					<div class="signin-form profile">
+
+						<div class="login-m_page_img">
+
+							<img src="images/model.jpg" alt=" " class="img-responsive" />
+
+						</div>
+						<div class="login-m_page">
+							<h3 class="sign">Sign In</h3>
+							<div class="login-form">
+								<form action="#" method="post">
+									<input type="email" name="email" placeholder="E-mail" required="">
+									<input type="password" name="password" placeholder="Password" required="">
+									<div class="tp">
+										<input type="submit" value="Sign In">
+									</div>
+								</form>
+							</div>
+							<div class="login-social-grids">
+								<ul>
+									<li>
+										<a href="#">
+											<i class="fa fa-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-rss"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<p>
+								<a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a>
+							</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Modal1 -->
+	<!-- Modal2 -->
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header_w3layouts_agile">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					<div class="signin-form profile">
+
+						<div class="login-m_page_img">
+
+							<img src="images/model.jpg" alt=" " class="img-responsive" />
+
+						</div>
+						<div class="login-m_page">
+							<h3 class="sign">Sign Up</h3>
+							<div class="login-form">
+								<form action="#" method="post">
+									<input type="text" name="name" placeholder="Username" required="">
+									<input type="email" name="email" placeholder="Email" required="">
+									<input type="password" name="password" placeholder="Password" id="password1" required="">
+									<input type="password" name="password" placeholder="Confirm Password" id="password2" required="">
+									<input type="submit" value="Sign Up">
+								</form>
+							</div>
+							<p>
+								<a href="#"> By clicking Sign up, I agree to your terms</a>
+							</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Modal2 -->
+
+	<!--/contact-->
+	<div class="banner_bottom">
+		<div class="container">
+			<div class="tittle_head">
+				<h3 class="header_w3layouts_agile">Contactez nous</h3>
+			</div>
+			<div class="inner_sec_w3_agileinfo">
+				<div class="col-md-8 map" data-aos="fade-left">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5259.002300112545!2d1.975571129363207!3d48.77232201711669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e683f40eed9f35%3A0xe77f6e9ad55621f0!2sChrysalead%2C+p%C3%A9pini%C3%A8re+et+village+d&#39;entreprises!5e0!3m2!1sfr!2sfr!4v1534412081163" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-4 contact_grids_info">
+					<div class="contact_grid" data-aos="fade-down">
+						<div class="contact_grid_right">
+							<h4>Chrysalead</h4>
+							<p>2 Rue Eugène Pottier, 78190 Trappes.</p>
+						</div>
+					</div>
+					<div class="contact_grid" data-aos="slide-up">
+						<div class="contact_grid_right">
+							<h4> Web Force 3</h4>
+							<p>2 Rue Eugène Pottier, 78190 Trappes.,</p>
+							
+						</div>
+					</div>
+					
+						<div class="clearfix"> </div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+
+			<div class="mail_form">
+				<h3 class="header_w3layouts_agile ">Nous envoyer un message</h3>
+				<div class="inner_sec_w3_agileinfo">
+					<form action="#" method="post">
+						<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Name" type="text" id="input-13" placeholder="" required="" />
+							<label class="input__label input__label--chisato" for="input-13">
+								<span class="input__label-content input__label-content--chisato" data-content="Name">Nom</span>
+							</label>
+						</span>
+						<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Email" type="email" id="input-14" placeholder="" required="" />
+							<label class="input__label input__label--chisato" for="input-14">
+								<span class="input__label-content input__label-content--chisato" data-content="Email">Email</span>
+							</label>
+						</span>
+						<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Subject" type="text" id="input-15" placeholder="" required="" />
+							<label class="input__label input__label--chisato" for="input-15">
+								<span class="input__label-content input__label-content--chisato" data-content="Subject">Sujet</span>
+							</label>
+						</span>
+						<textarea name="Message" placeholder=" Votre commentaire ici....." required=""></textarea>
+						<input type="submit" value="Envoyez">
+					</form>
+
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+
+		</div>
+	</div>
+	<!--//contact-->
+	<!--/footer-->
+	<div class="contact-footer">
+
+		<div class="bottom-social">
+			<div class="container">
+				<div class="col-md-8 botttom-nav-w3ls-agile">
+					<ul class="f_links col-md-4">
+						<li>
+							<a href="{{path('index')}}">Accueil</a>
+						</li>
+						<li>
+							<a href="about.html">Nous connaitre</a>
+						</li>
+						<li>
+							<a href="services.html">Créez votre évement</a>
+						</li>
+						<li>
+							<a href="gallery.html">Chercher un évenement</a>
+						</li>
+						<li>
+							<a href="{{path('contact')}}">Contact</a>
+						</li>
+						<li>
+							<a href="404.html">Evenements</a>
+						</li>
+						
+					</ul>
+					
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-4 social-icons">
+					<h6> Connectez vous avec </h6>
+					<a class="facebook" href="https://www.facebook.com/">
+						<span class="fa fa-facebook"></span>
+					</a>
+					<a class="twitter" href="https://twitter.com/">
+						<span class="fa fa-twitter"></span>
+					</a>
+					<a class="pinterest" href="https://www.pinterest.fr/">
+						<span class="fa fa-pinterest-p"></span>
+					</a>
+					<a class="linkedin" href="https://www.linkedin.com/">
+						<span class="fa fa-linkedin"></span>
+					</a>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+		<div class="copy">
+			<h2 class="footer-logo">
+				<a href="{{path('index')}}">Projet Sport
+					<span>Un évenement sportif à porter de main</span>
+				</a>
+			</h2>
+			<p>© 2018 Projet Sport. All rights reserved | Design by
+				Mohammed et Arthur.</a>
+			</p>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!--/footer -->
+	<!-- js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+	<!-- //js -->
+	<!-- password-script -->
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("password2").setCustomValidity('');
+			//empty string means no validation error
+		}
+	</script>
+	<!-- //password-script -->
+	<!-- /js files -->
+	
+	<link href='{{ absolute_url(asset('assets/css/aos.css')) }}' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='{{ absolute_url(asset('assets/js/aos.js')) }}'></script>
+	<script src="{{ absolute_url(asset('assets/js/aosindex.js')) }}"></script>
+	<!-- //js files -->
+	<!--search-bar-->
+	<script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>
+	<!--//search-bar-->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="{{ absolute_url(asset('assets/js/move-top.js')) }}"></script>
+	<script type="text/javascript" src="{{ absolute_url(asset('assets/js/easing.js')) }}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+									var defaults = {
+							  			containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear' 
+							 		};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+	<script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
+	
+
+
+</body>
+
+</html>
+

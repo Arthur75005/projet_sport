@@ -26,7 +26,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-{% include "include/index.html.twig" %}
+
+{% block main %}{% endblock %}
 {% include "include/connexion/signin.html.twig" %}
 {% include "include/connexion/signup.html.twig" %}
 {% include "include/elem1.html.twig" %}
@@ -34,7 +35,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% include "include/elem3.html.twig" %}
 {% include "include/elem4.html.twig" %}
 {% include "include/footer.html.twig" %}
-{% block main %}{% endblock %}
 
     <!-- js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

@@ -5,13 +5,13 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 
-class HomeController extends Controller
+
+class ContactController Extends Controller
 {
-    public function index()
+    public function contact()
     {
-        return $this->render("include/index.html.twig");
+        return $this->render("contact.html.twig");
     }
     
 }
