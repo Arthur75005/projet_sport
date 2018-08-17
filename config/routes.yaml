@@ -1,3 +1,23 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::home
+
+register:
+    path: /register
+    controller: App\Controller\LoginController::postRegister
+    methods: [POST]
+
+logout: 
+    path: /logout
+    controller: App\Controller\LoginController::logout
+
+contact:
+  path: /contact
+  controller: App\Controller\ContactController::contact
+
+create_event:
+  path: /create_event
+  controller: App\Controller\Create_eventController::create_event
+
+
+
