@@ -1,6 +1,4 @@
-index:
-   path: /
-   controller: App\Controller\HomeController::index
+
 
 contact:
   path: /contact
@@ -10,13 +8,18 @@ create_event:
   path: /create_event
   controller: App\Controller\Create_eventController::create_event
 
-join_event:
-  path: /join_event
-  controller: App\Controller\Join_eventController::join_event
+index:
+    path: /
+    controller: App\Controller\HomeController::home
 
-about:
-  path: /about
-  controller: App\Controller\AboutController::about
+register:
+    path: /register
+    controller: App\Controller\LoginController::postRegister
+    methods: [POST]
+
+logout: 
+    path: /logout
+    controller: App\Controller\LoginController::logout
 
 
 

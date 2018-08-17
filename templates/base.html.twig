@@ -20,21 +20,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="{{ absolute_url(asset('assets/css/bootstrap.css')) }}" rel="stylesheet">
     <link href="{{ absolute_url(asset('assets/css/style.css')) }}" rel="stylesheet">
     <link href="{{ absolute_url(asset('assets/css/font-awesome.css')) }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
-    {% block stylesheets %}{% endblock %}
+    <link href="//fonts.googleapis.com/css?family=Mallanna" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
-
-{% block main %}{% endblock %}
-{% include "include/connexion/signin.html.twig" %}
-{% include "include/connexion/signup.html.twig" %}
-{% include "include/elem1.html.twig" %}
-{% include "include/elem2.html.twig" %}
-{% include "include/elem3.html.twig" %}
-{% include "include/elem4.html.twig" %}
-{% include "include/footer.html.twig" %}
+    {% include "include/index.html.twig" %} {% include "include/connexion/signin.html.twig" %} {% include "include/connexion/signup.html.twig" %} {% include "include/elem1.html.twig" %} {% include "include/elem2.html.twig" %} {% include "include/elem3.html.twig"
+    %} {% include "include/elem4.html.twig" %} {% include "include/footer.html.twig" %} {% block main %}{% endblock %}
 
     <!-- js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -71,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $("#slider4").responsiveSlides({
                 auto: true,
                 pager: true,
-                nav: false,
+                nav: true,
                 speed: 1000,
                 namespace: "callbacks",
                 before: function() {
@@ -120,8 +113,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <span id="toTopHover" style="opacity: 1;"> </span>
     </a>
     <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
+    <script>
+        $(document).ready(function() {
+            $("#register").submit(function(e) {
+                e.preventDefault();
+                let isVide = false;
+                for (let i = 0; i < $("#register input").length; i++) {
+                    if ($("#register input").eq(i).val().length < 1)
+                        isVide = true;
 
+                }
+                if (!isVide) {
+                    let data = $(this).serialize();
+                    $.post("/register", data, function(data) {
+                        $("#message").html("<div class='text-center alert alert-success'>Vous êtes inscrit sur notre site !</div>");
+                    })
+                } else
+                    alert("input not value !!");
 
+            })
+        })
+    </script>
+    
 </body>
 
 </html>

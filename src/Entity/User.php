@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,7 +20,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_de_naissance;
 
@@ -34,7 +35,7 @@ class User
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $sexe;
 
@@ -163,12 +164,12 @@ class User
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getPassword(): ?string
     {
         return $this->mdp;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $mdp): self
     {
         $this->mdp = $mdp;
 
@@ -304,4 +305,18 @@ class User
 
         return $this;
     }
+    
+    public function getRoles()
+    {
+        return array("ROLE_USER");
+    }
+
+    public function getSalt(){}
+    
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    public function eraseCredentials(){}
 }
