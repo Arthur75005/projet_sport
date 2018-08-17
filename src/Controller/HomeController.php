@@ -38,21 +38,3 @@ class HomeController extends Controller
     
     
 }
-
-class ContactController Extends Controller
-{
-    public function contact()
-    {
-        return $this->render("contact.html.twig");
-    }
-
-}
-
-class Create_eventController Extends Controller
-{
-    public function create_event()
-    {
-        return $this->render("event/create_event.html.twig");
-    }
-
-}
