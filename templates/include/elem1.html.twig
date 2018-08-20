@@ -1,41 +1,46 @@
-   <!--//header_w3layouts_agile-->
-    <!--/banner_bottom-->
-    <div class="banner_bottom">
-        <div class="banner_bottom_in">
-            <h3 class="header_w3layouts_agile" id="titre" data-aos="fade-down">Online Yoga, Meditation and Wellness</h3>
+<!--//header_w3layouts_agile-->
+<!--/banner_bottom-->
+<div class="banner_bottom">
+    <div class="banner_bottom_in">
+        <h3 class="header_w3layouts_agile" id="titre" data-aos="fade-down">Trouver votre evenement</h3>
 
-            <p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-            <div class="edu_button" data-aos="fade-up">
-                <a class="btn btn-primary btn-lg" href="about.html" role="button">Read More </a>
-            </div>
-            <div class="col-md-7 yoga-video" data-aos="flip-left">
-                {# <img src="images/b-scrn.png" class="img-responsive" alt=""> #}
-                <span id="text_latlng"></span>
-                <div id="map-canvas" style="height:450px;width:100%"></div>
-            </div>
-            <div class="col-md-5 join-form" data-aos="flip-right">
-                <div class="signin-form profile join-fm">
-
-                    <h3 class="sign">Join Now</h3>
-                    <div class="login-form">
-                        <form action="#" method="post">
-                            <input type="text" name="name" placeholder="Name" required="">
-                            <input type="email" name="email" placeholder="Email" required="">
-                            <input type="password" name="password" placeholder="Password" required="">
-
-                            <input type="submit" value="Sign Up">
-                        </form>
-                    </div>
-                    <p>
-                        <a href="#"> By clicking Sign up, I agree to your terms</a>
-                    </p>
-
-                </div>
-            </div>
-            <div class="clearfix"></div>
+        <div class="col-md-7 yoga-video" data-aos="flip-left">
+            {# <img src="images/b-scrn.png" class="img-responsive" alt=""> #}
+            <span id="text_latlng"></span>
+            <div id="map-canvas" style="height:550px;width:100%"></div>
         </div>
+        <div class="col-md-5 join-form" data-aos="flip-right">
+            <div class="signin-form profile join-fm">
+
+                <h3 class="sign">Rejoindre un evenement :</h3>
+                                       <div class="table-responsive p-20">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="bdwT-0">Prenom</th>
+                                                        <th class="bdwT-0">Nom</th>
+                                                        <th class="bdwT-0">Email</th>
+                                                        <th class="bdwT-0">Departement</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {# {% for theUser in users %}
+                                                    <tr>
+                                                        <td class="fw-600">{{ theUser.prenom}}</td>
+                                                        <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">{{ theUser.nom }}</span></td>
+                                                        <td>{{ theUser.email }}</td>
+                                                        <td><span class="text-success">{{ theUser.departement }}</span></td>
+                                                    </tr>
+                                                    {% endfor %} #}
+                                                </tbody>
+                                            </table>
+                                        </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <!--//banner_bottom-->
-    {% block scripts %} {% endblock %}
-    
+</div>
+<!--//banner_bottom-->
+{% block scripts %} {% endblock %}

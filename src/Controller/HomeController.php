@@ -5,20 +5,13 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-
 use App\Entity\User;
 
 
 class HomeController extends Controller
 {
     public function home()
-    {
-
-        $er = $this->getDoctrine()->getRepository(User::class);
-        // $users = $er->findByPrenom("Arthur");
-        // dump($users);
-
+        {
 
 
 
