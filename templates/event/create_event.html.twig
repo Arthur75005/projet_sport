@@ -229,17 +229,43 @@
             <h3 class="header_w3layouts_agile">Creez votre evenement</h3>
         </div>
 
-        <form class="col-sm-12" id="searchForm">
-            <div class="form-group col-sm-4 col-sm-offset-4 nospace">
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" name="search_city" id="autocomplete" placeholder="Enter your address" onFocus="initAutocomplete();" required>
-                    <span class="input-group-btn"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Rechercher</button></span>
+        <div class="col-md-7 yoga-video" data-aos="flip-left">
+                
+                <span id="text_latlng"></span>
+                <div id="map-canvas" style="height:450px;width:100%"></div>
+            </div>
+            <div class="col-md-5 join-form" data-aos="flip-right">
+                <div class="signin-form profile join-fm">
+
+                    <h3 class="sign">Coordonées de l'evenement"</h3>
+                    <div >
+                        <form method="post" id="create-event" >
+                         <input type="text" class="form-control" name="zone" id="zone" placeholder="Enter your address" onFocus="initAutocomplete();" required>
+                         <select class="login-form" name="type_event" id="type_event" required="">
+                            <option value="seul" selected>Seul</option>
+                            <option value="equipe" selected>Equipe</option>
+                         </select>                        
+                            <select class="login-form" name="categories" id="categories" required="">
+                            <option value="football" selected>Football</option>
+                            <option value="basketball" selected>Basketball</option>
+                            <option value="handball" selected>Handball</option>
+                            <option value="tennis" selected>Tennis</option>
+                            <option value="randonée" selected>Randonée</option>
+                            </select>
+                            <input type="date" name="date_event" id="date_event" placeholder="Date de l'événement" required="">
+                            <span class="input-group-btn"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Rechercher</button></span>
+                           
+                            
+                        </form>
+                    </div>
+                    <p>
+                        <a href="#"> By clicking Sign up, I agree to your terms</a>
+                    </p>
+
                 </div>
             </div>
-        </form>
-        <span id="text_latlng" ></span>
-        <div id="map-canvas" class="col-7 offset-md-3  yoga-video"  style="height:450px;width:50%"></div>
-    </div>
+            <div class="clearfix"></div>
+ 
     <!--//contact-->
     <!--/footer-->
     <div class="contact-footer">
@@ -347,9 +373,9 @@
         function TrouverAdresse() {
 
             // Récupération de l'adresse tapée dans le formulaire
-            var adresse = document.getElementById('autocomplete').value;
+            var adresse = document.getElementById('zone').value;
             geocoder.geocode({
-                'autocomplete': adresse
+                'zone': adresse
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
@@ -371,7 +397,7 @@
             });
         }
 
-		$("#searchForm").submit(function(e){
+		$("#create-event").submit(function(e){
 			e.preventDefault();
 			console.log("Mike le roi")
 			TrouverAdresse();
@@ -400,7 +426,7 @@
                 // location types.
                 autocomplete = new google.maps.places.Autocomplete(
                     /** @type {!HTMLInputElement} */
-                    (document.getElementById('autocomplete')), {
+                    (document.getElementById('zone')), {
                         types: ['geocode']
                     });
 
@@ -412,7 +438,7 @@
             function fillInAddress() {
                 // Get the place details from the autocomplete object and scroll on map.
             let place = autocomplete.getPlace();
-            $("#searchForm").submit(function(e){
+            $("#create-event").submit(function(e){
             e.preventDefault();
 			geocodePlaceId(place.place_id)
         })
