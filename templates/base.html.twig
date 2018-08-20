@@ -133,7 +133,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 if (!isVide) {
                     let data = $(this).serialize();
                     $.post("/register", data, function(data) {
+                        $("#register").css("display", "none");
                         $("#message").html("<div class='text-center alert alert-success'>Vous êtes inscrit sur notre site !</div>");
+                        setTimeout(function(){
+                        $("#myModal3").css("display", "none");
+                    }, 1200);
                     })
                 } else
                     alert("input not value !!");
