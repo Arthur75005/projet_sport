@@ -19,5 +19,13 @@ create_event:
   path: /create_event
   controller: App\Controller\Create_eventController::create_event
 
+profile:
+  path: /profile
+  controller: App\Controller\ProfileController::profile
+
+editProfile : 
+    path: /profile
+    controller: App\Controller\UserController::editProfile
+
 
 

@@ -9,7 +9,7 @@
         {% if user == null %}
             <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
         {% else %}
-            <a class="sign" href="" data-toggle="modal" data-target="#myModal2">Hey {{ user.prenom }}</a>
+            <a class="sign" href="/profile"  data-target="#myModal2">Hey {{ user.prenom }}</a>
             <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
         {% endif %}
         </h5>
