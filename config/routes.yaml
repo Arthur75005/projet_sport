@@ -15,17 +15,31 @@ contact:
   path: /contact
   controller: App\Controller\ContactController::contact
 
+create_event_post:
+  path: /create_event
+  controller: App\Controller\EventController::create_event_post
+  methods: [POST]
+
+
 create_event:
   path: /create_event
-  controller: App\Controller\Create_eventController::create_event
+  controller: App\Controller\EventController::create_event_view
+  methods: [GET]
 
 profile:
   path: /profile
   controller: App\Controller\ProfileController::profile
+  methods: [GET]
+
+profile_post:
+  path: /profile
+  controller: App\Controller\ProfileController::editProfile
+  methods: [POST]
 
 editProfile : 
-    path: /profile
-    controller: App\Controller\UserController::editProfile
+    path: /profile2
+    controller: App\Controller\ProfileController::editProfile
+    methods: [POST]
 
 
 

@@ -49,6 +49,21 @@ class Event
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="string", length=75)
+     */
+    private $event_name;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -141,6 +156,42 @@ class Event
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
         }
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(string $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(string $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getEventName(): ?string
+    {
+        return $this->event_name;
+    }
+
+    public function setEventName(string $event_name): self
+    {
+        $this->event_name = $event_name;
 
         return $this;
     }

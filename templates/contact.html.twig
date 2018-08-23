@@ -17,6 +17,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 	<link href="{{ absolute_url(asset('assets/css/bootstrap.css')) }}" rel='stylesheet' type='text/css' />
 	<link href="{{ absolute_url(asset('assets/css/style.css')) }}" rel='stylesheet' type='text/css' />
 	<link href="{{ absolute_url(asset('assets/css/contact.css')) }}" rel='stylesheet' type='text/css' />
@@ -26,7 +28,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-
+<div class="top-bar_sub_w3ls_agileits">
+						<h6>
+							<a class="navbar-brand" href="{{path('index')}}">Projet Sport
+							</a>
+						</h6>
+    <div class="search">
+        <h5>
+        {% if user == null %}
+            <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
+        {% else %}
+            <a class="sign" href="/profile"  data-target="#myModal2">Hey {{ user.prenom }}</a>
+            <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+        {% endif %}
+        </h5>
+        <div class="cd-main-header_w3layouts_agile">
+            {# <ul class="cd-header_w3layouts_agile-buttons">
+                <li>
+                    <a class="cd-search-trigger" href="#cd-search">
+                        <span></span>
+                    </a>
+                </li>
+            </ul> #}
+            <!-- cd-header_w3layouts_agile-buttons -->
+        </div>
+        <div id="cd-search" class="cd-search">
+            <form action="#" method="post">
+                <input name="Search" type="search" placeholder="Click enter after typing...">
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
 	<!--/top-bar-->
 	<div class="header_w3layouts_agile-main inner_banner">
 		<header class="header" id="home">

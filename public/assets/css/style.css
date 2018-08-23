@@ -1013,6 +1013,7 @@
         
         .login-form {
             margin: 1em 0 0.5em;
+            padding: 1% 10%;
         }
         
         .login-m_page_img img {
@@ -1994,6 +1995,11 @@ background: #428bca;
         
         .test_img_info {
             text-align: left;
+        }
+        
+        #profile {
+            margin-bottom: 5%;
+            margin-top: 3%;
         }
         /**
   MEDIA QUERIES

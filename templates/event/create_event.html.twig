@@ -30,22 +30,27 @@
 </head>
 
 <body>
+
     <div class="top-bar_sub_w3ls_agileits">
         <h6>
             Projet Sportif
         </h6>
         <div class="search">
             <h5>
-                <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">Se connecter</a>
+                {% if user == null %}
+                <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a> {% else %}
+                <a class="sign" href="" data-toggle="modal" data-target="#myModal2">Hey {{ user.prenom }}</a>
+                <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a> {% endif %}
             </h5>
             <div class="cd-main-header_w3layouts_agile">
+                {#
                 <ul class="cd-header_w3layouts_agile-buttons">
                     <li>
                         <a class="cd-search-trigger" href="#cd-search">
                             <span></span>
                         </a>
                     </li>
-                </ul>
+                </ul> #}
                 <!-- cd-header_w3layouts_agile-buttons -->
             </div>
             <div id="cd-search" class="cd-search">
@@ -53,6 +58,7 @@
                     <input name="Search" type="search" placeholder="Click enter after typing...">
                 </form>
             </div>
+
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -179,7 +185,7 @@
                                 <a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a>
                             </p>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="clearfix" style="margin-bottom:5%;"></div>
                     </div>
                 </div>
             </div>
@@ -226,184 +232,190 @@
     <div class="banner_bottom">
 
         <div class="tittle_head">
-            <h3 class="header_w3layouts_agile">Creez votre evenement</h3>
+            <h3 class="header_w3layouts_agile text-center">Creez votre evenement</h3>
         </div>
 
         <div class="col-md-7 yoga-video" data-aos="flip-left">
-                
-                <span id="text_latlng"></span>
-                <div id="map-canvas" style="height:450px;width:100%"></div>
-            </div>
-            <div class="col-md-5 join-form" data-aos="flip-right">
-                <div class="signin-form profile join-fm">
 
-                    <h3 class="sign">Coordonées de l'evenement"</h3>
-                    <div >
-                        <form method="post" id="create-event" >
-                         <input type="text" class="form-control" name="zone" id="zone" placeholder="Enter your address" onFocus="initAutocomplete();" required>
-                         <select class="login-form" name="type_event" id="type_event" required="">
+            <span id="text_latlng"></span>
+            <div id="map-canvas" style="height:450px;width:100%"></div>
+        </div>
+        <div class="col-md-5 join-form" data-aos="flip-right">
+            <div class="signin-form profile join-fm">
+
+                <h3 class="sign">Ou se deroule votre evenement :</h3>
+                <div>
+                    <form method="post" id="create-event">
+                        <input type="text" class="form-control" name="zone" id="zone" placeholder="Enter your address" onFocus="initAutocomplete();" required="">
+                        <div class="form-group">
+                            <label for="nom">Donner un nom à votre evenement :</label>
+                            <input type="text" class="form-control text-center" id="name" name="name" placeholder="Entrer un nom d'evenement">
+                        </div>
+                        <select class="login-form" name="type_event" id="type_event" required="">
                             <option value="seul" selected>Seul</option>
                             <option value="equipe" selected>Equipe</option>
-                         </select>                        
-                            <select class="login-form" name="categories" id="categories" required="">
+                         </select>
+                        <select class="login-form" name="categories" id="categories" required="">
                             <option value="football" selected>Football</option>
-                            <option value="basketball" selected>Basketball</option>
-                            <option value="handball" selected>Handball</option>
-                            <option value="tennis" selected>Tennis</option>
-                            <option value="randonée" selected>Randonée</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="handball">Handball</option>
+                            <option value="tennis">Tennis</option>
+                            <option value="randonée">Randonée</option>
                             </select>
-                            <input type="date" name="date_event" id="date_event" placeholder="Date de l'événement" required="">
-                            <span class="input-group-btn"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Rechercher</button></span>
-                           
-                            
-                        </form>
-                    </div>
-                    <p>
-                        <a href="#"> By clicking Sign up, I agree to your terms</a>
-                    </p>
+                        <input type="date" name="date_event" id="date_event" placeholder="Date de l'événement" required="" style="padding: 1%;">
+                        <span class="input-group-btn c"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Créez évenement </button></span>
+                        <input type="hidden" name="longitude" id="longitude">
+                        <input type="hidden" name="latitude" id="latitude">
 
+
+                    </form>
                 </div>
-            </div>
-            <div class="clearfix"></div>
- 
-    <!--//contact-->
-    <!--/footer-->
-    <div class="contact-footer">
-
-        <div class="bottom-social">
-            <div class="container">
-                <div class="col-md-8 botttom-nav-w3ls-agile">
-                    <ul class="f_links col-md-4">
-                        <li>
-                            <a href="{{path('index')}}">Accueil</a>
-                        </li>
-                        <li>
-                            <a href="about.html">Nous connaitre</a>
-                        </li>
-                        <li>
-                            <a href="services.html">Créez votre évement</a>
-                        </li>
-                        <li>
-                            <a href="gallery.html">Chercher un évenement</a>
-                        </li>
-                        <li>
-                            <a href="{{path('contact')}}">Contact</a>
-                        </li>
-                        <li>
-                            <a href="404.html">Evenements</a>
-                        </li>
-
-                    </ul>
-
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-4 social-icons">
-                    <h6> Connectez vous avec </h6>
-                    <a class="facebook" href="https://www.facebook.com/">
-                        <span class="fa fa-facebook"></span>
-                    </a>
-                    <a class="twitter" href="https://twitter.com/">
-                        <span class="fa fa-twitter"></span>
-                    </a>
-                    <a class="pinterest" href="https://www.pinterest.fr/">
-                        <span class="fa fa-pinterest-p"></span>
-                    </a>
-                    <a class="linkedin" href="https://www.linkedin.com/">
-                        <span class="fa fa-linkedin"></span>
-                    </a>
-                </div>
-                <div class="clearfix"></div>
+                <p>
+                    <a href="#"> By clicking Sign up, I agree to your terms</a>
+                </p>
 
             </div>
         </div>
-        <div class="copy">
-            <h2 class="footer-logo">
-                <a href="{{path('index')}}">Projet Sport
+        <div class="clearfix" style="margin-bottom:5%;"></div>
+
+        <!--//contact-->
+        <!--/footer-->
+        <div class="contact-footer">
+
+            <div class="bottom-social">
+                <div class="container">
+                    <div class="col-md-8 botttom-nav-w3ls-agile">
+                        <ul class="f_links col-md-4">
+                            <li>
+                                <a href="{{path('index')}}">Accueil</a>
+                            </li>
+                            <li>
+                                <a href="about.html">Nous connaitre</a>
+                            </li>
+                            <li>
+                                <a href="services.html">Créez votre évement</a>
+                            </li>
+                            <li>
+                                <a href="gallery.html">Chercher un évenement</a>
+                            </li>
+                            <li>
+                                <a href="{{path('contact')}}">Contact</a>
+                            </li>
+                            <li>
+                                <a href="404.html">Evenements</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-4 social-icons">
+                        <h6> Connectez vous avec </h6>
+                        <a class="facebook" href="https://www.facebook.com/">
+                            <span class="fa fa-facebook"></span>
+                        </a>
+                        <a class="twitter" href="https://twitter.com/">
+                            <span class="fa fa-twitter"></span>
+                        </a>
+                        <a class="pinterest" href="https://www.pinterest.fr/">
+                            <span class="fa fa-pinterest-p"></span>
+                        </a>
+                        <a class="linkedin" href="https://www.linkedin.com/">
+                            <span class="fa fa-linkedin"></span>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+            <div class="copy">
+                <h2 class="footer-logo">
+                    <a href="{{path('index')}}">Projet Sport
 					<span>Un évenement sportif à porter de main</span>
 				</a>
-            </h2>
-            <p>© 2018 Projet Sport. All rights reserved | Design by Mohammed et Arthur.</a>
-            </p>
-            <div class="clearfix"></div>
+                </h2>
+                <p>© 2018 Projet Sport. All rights reserved | Design by Mohammed et Arthur.</a>
+                </p>
+                <div class="clearfix"></div>
+            </div>
         </div>
-    </div>
-    <!--/footer -->
-    <!-- js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <!--/footer -->
+        <!-- js -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-    <!-- //js -->
-    <!-- /js files -->
+        <!-- //js -->
+        <!-- /js files -->
 
-    <link href='{{ absolute_url(asset(' assets/css/aos.css ')) }}' rel='stylesheet prefetch' type="text/css" media="all" />
-    <script src='{{ absolute_url(asset(' assets/js/aos.js ')) }}'></script>
-    <script src="{{ absolute_url(asset('assets/js/aosindex.js')) }}"></script>
-    <!-- //js files -->
-    <!--search-bar-->
-    <script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>
-    <!--//search-bar-->
-    <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="{{ absolute_url(asset('assets/js/move-top.js')) }}"></script>
-    <script type="text/javascript" src="{{ absolute_url(asset('assets/js/easing.js')) }}"></script>
-    <!-- start-smoth-scrolling -->
-    <a href="#" id="toTop" style="display: block;">
-        <span id="toTopHover" style="opacity: 1;"> </span>
-    </a>
+        <link href='{{ absolute_url(asset(' assets/css/aos.css ')) }}' rel='stylesheet prefetch' type="text/css" media="all" />
+        <script src='{{ absolute_url(asset(' assets/js/aos.js ')) }}'></script>
+        <script src="{{ absolute_url(asset('assets/js/aosindex.js')) }}"></script>
+        <!-- //js files -->
+        <!--search-bar-->
+        <script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>
+        <!--//search-bar-->
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="{{ absolute_url(asset('assets/js/move-top.js')) }}"></script>
+        <script type="text/javascript" src="{{ absolute_url(asset('assets/js/easing.js')) }}"></script>
+        <!-- start-smoth-scrolling -->
+        <a href="#" id="toTop" style="display: block;">
+            <span id="toTopHover" style="opacity: 1;"> </span>
+        </a>
 
-    <script type="text/javascript">
-        var geocoder;
-        var map;
-        var geocoder = new google.maps.Geocoder;
-        var infowindow = new google.maps.InfoWindow;
+        <script type="text/javascript">
+            var geocoder;
+            var map;
+            var geocoder = new google.maps.Geocoder;
+            var infowindow = new google.maps.InfoWindow;
 
-        // initialisation de la carte Google Map de départ
-        function initialiserCarte() {
-            geocoder = new google.maps.Geocoder();
-            // Ici j'ai mis la latitude et longitude du vieux Port de Marseille pour centrer la carte de départ
-            var latlng = new google.maps.LatLng(48.7736641, 1.979039);
-            var mapOptions = {
-                    zoom: 14,
-                    center: latlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                // map-canvas est le conteneur HTML de la carte Google Map
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        }
+            // initialisation de la carte Google Map de départ
+            function initialiserCarte() {
+                geocoder = new google.maps.Geocoder();
+                // Ici j'ai mis la latitude et longitude du vieux Port de Marseille pour centrer la carte de départ
+                var latlng = new google.maps.LatLng(48.7736641, 1.979039);
+                var mapOptions = {
+                        zoom: 14,
+                        center: latlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }
+                    // map-canvas est le conteneur HTML de la carte Google Map
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            }
 
 
-        function TrouverAdresse() {
+            function TrouverAdresse() {
 
-            // Récupération de l'adresse tapée dans le formulaire
-            var adresse = document.getElementById('zone').value;
-            geocoder.geocode({
-                'zone': adresse
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
-                    // Récupération des coordonnées GPS du lieu tapé dans le formulaire
-                    var strposition = results[0].geometry.location + "";
-                    strposition = strposition.replace('(', '');
-                    strposition = strposition.replace(')', '');
-                    // Affichage des coordonnées dans le <span>
-                    document.getElementById('text_latlng').innerHTML = 'Coordonnées : ' + strposition;
-                    // Création du marqueur du lieu (épingle)
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Adresse introuvable: ' + status);
-                }
+                // Récupération de l'adresse tapée dans le formulaire
+                var adresse = document.getElementById('zone').value;
+                geocoder.geocode({
+                    'zone': adresse
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        // Récupération des coordonnées GPS du lieu tapé dans le formulaire
+                        var strposition = results[0].geometry.location + "";
+                        strposition = strposition.replace('(', '');
+                        console.log(strposition)
+                            // Affichage des coordonnées dans le <span>
+                        document.getElementById('text_latlng').innerHTML = 'Coordonnées : ' + strposition;
+                        // Création du marqueur du lieu (épingle)
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Adresse introuvable: ' + status);
+                    }
 
-            });
-        }
+                });
+            }
 
-		$("#create-event").submit(function(e){
-			e.preventDefault();
-			console.log("Mike le roi")
-			TrouverAdresse();
-		})
-		
-		
+            $("#create-event").submit(function(e) {
+                e.preventDefault();
+                console.log("Mike le roi")
+                TrouverAdresse();
+            })
+
+
             // This example displays an address form, using the autocomplete feature
             // of the Google Places API to help users fill in the information.
 
@@ -436,13 +448,14 @@
             }
 
             function fillInAddress() {
-                // Get the place details from the autocomplete object and scroll on map.
-            let place = autocomplete.getPlace();
-            $("#create-event").submit(function(e){
-            e.preventDefault();
-			geocodePlaceId(place.place_id)
-        })
-}
+                // Get the place details from the autocomplete object and scroll on map. formatted_address
+                let place = autocomplete.getPlace();
+                geocodePlaceId(place.place_id)
+                $("#create-event").submit(function(e) {
+                    //e.preventDefault();
+                    geocodePlaceId(place.place_id)
+                })
+            }
 
 
             // Bias the autocomplete object to the user's geographical location,
@@ -463,51 +476,56 @@
                 }
             }
 
-			// This function is called when the user clicks the UI button requesting
-			// a geocode of a place ID.
-			function geocodePlaceId(placeId) {
-				geocoder.geocode({'placeId': placeId}, function(results, status) {
-				if (status === 'OK') {
-					if (results[0]) {
-					map.setZoom(11);
-					map.setCenter(results[0].geometry.location);
-					var marker = new google.maps.Marker({
-						map: map,
-						position: results[0].geometry.location
-					});
-					infowindow.setContent(results[0].formatted_address);
-					infowindow.open(map, marker);
-					} else {
-					window.alert('No results found');
-					}
-				} else {
-					window.alert('Geocoder failed due to: ' + status);
-				}
-				});
-			}
+            // This function is called when the user clicks the UI button requesting
+            // a geocode of a place ID.
+            function geocodePlaceId(placeId) {
+                geocoder.geocode({
+                    'placeId': placeId
+                }, function(results, status) {
+                    if (status === 'OK') {
+                        if (results[0]) {
+                            map.setZoom(11);
+                            map.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+                            });
+                            // infowindow.setContent(results[0].formatted_address);
+                            // infowindow.open(map, marker);
+                        } else {
+                            window.alert('No results found');
+                        }
+                        document.getElementById("latitude").value = results[0].geometry.location.lat();
+                        document.getElementById("longitude").value = results[0].geometry.location.lng();
 
-			//------------------------------------------------------------------------------------------------------------------------------------------
-			
-			window.onload = function() {
-				document.getElementById("password1").onchange = validatePassword;
-				document.getElementById("password2").onchange = validatePassword;
-			}
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
 
-			function validatePassword() {
-				var pass2 = document.getElementById("password2").value;
-				var pass1 = document.getElementById("password1").value;
-				if (pass1 != pass2)
-					document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-				else
-					document.getElementById("password2").setCustomValidity('');
-				//empty string means no validation error
-			}
-    </script>
-    <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
+            //------------------------------------------------------------------------------------------------------------------------------------------
+
+            window.onload = function() {
+                document.getElementById("password1").onchange = validatePassword;
+                document.getElementById("password2").onchange = validatePassword;
+            }
+
+            function validatePassword() {
+                var pass2 = document.getElementById("password2").value;
+                var pass1 = document.getElementById("password1").value;
+                if (pass1 != pass2)
+                    document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+                else
+                    document.getElementById("password2").setCustomValidity('');
+                //empty string means no validation error
+            }
+        </script>
+        <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
 
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD42HD93hlHe0cVHdokra7uy69eZqI3HUg&libraries=places&callback=initialiserCarte" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD42HD93hlHe0cVHdokra7uy69eZqI3HUg&libraries=places&callback=initialiserCarte" async defer></script>
 
 
 </body>
