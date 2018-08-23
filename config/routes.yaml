@@ -26,6 +26,7 @@ create_event:
   controller: App\Controller\EventController::create_event_view
   methods: [GET]
 
+
 profile:
   path: /profile
   controller: App\Controller\ProfileController::profile

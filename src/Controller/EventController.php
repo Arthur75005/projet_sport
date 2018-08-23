@@ -26,12 +26,15 @@ class EventController extends Controller
 
     public function create_event_post(Request $request)
     {
+
         $user = $this->getUser();
         if( $user ){
             $data = array("user" => array("prenom" => $user->getPrenom(), "nom" => $user->getNom()));
         } else {
             return $this->redirectToRoute('register');
         }
+
+        
 
         $events = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -42,6 +45,7 @@ class EventController extends Controller
             $event->setEventName($request->get("name"));
             $event->setLongitude($request->get("longitude"));
             $event->setLatitude($request->get("latitude"));
+
             $event->setDateEvent(new \DateTime($request->get("date_event")));
             $event->setCategories($request->get("categories"));
             $event->setUser($user);
@@ -67,3 +71,4 @@ class EventController extends Controller
     }
     
 }
+
