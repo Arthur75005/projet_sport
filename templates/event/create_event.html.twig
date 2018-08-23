@@ -30,32 +30,38 @@
 </head>
 
 <body>
+
     <div class="top-bar_sub_w3ls_agileits">
-        <h6>
-            Projet Sportif
-        </h6>
-        <div class="search">
-            <h5>
-                <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">Se connecter</a>
-            </h5>
-            <div class="cd-main-header_w3layouts_agile">
-                <ul class="cd-header_w3layouts_agile-buttons">
-                    <li>
-                        <a class="cd-search-trigger" href="#cd-search">
-                            <span></span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- cd-header_w3layouts_agile-buttons -->
-            </div>
-            <div id="cd-search" class="cd-search">
-                <form action="#" method="post">
-                    <input name="Search" type="search" placeholder="Click enter after typing...">
-                </form>
-            </div>
+    <h6>
+        Projet Sportif
+    </h6>
+    <div class="search">
+        <h5>
+        {% if user == null %}
+            <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
+        {% else %}
+            <a class="sign" href="" data-toggle="modal" data-target="#myModal2">Hey {{ user.prenom }}</a>
+            <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+        {% endif %}
+        </h5>
+        <div class="cd-main-header_w3layouts_agile">
+            {# <ul class="cd-header_w3layouts_agile-buttons">
+                <li>
+                    <a class="cd-search-trigger" href="#cd-search">
+                        <span></span>
+                    </a>
+                </li>
+            </ul> #}
+            <!-- cd-header_w3layouts_agile-buttons -->
         </div>
-        <div class="clearfix"> </div>
+        <div id="cd-search" class="cd-search">
+            <form action="#" method="post">
+                <input name="Search" type="search" placeholder="Click enter after typing...">
+            </form>
+        </div>
     </div>
+    <div class="clearfix"> </div>
+</div>
 
 
     <div class="header_w3layouts_agile-main inner_banner">
@@ -439,7 +445,7 @@
                 // Get the place details from the autocomplete object and scroll on map.
             let place = autocomplete.getPlace();
             $("#create-event").submit(function(e){
-            e.preventDefault();
+            // e.preventDefault();
 			geocodePlaceId(place.place_id)
         })
 }
