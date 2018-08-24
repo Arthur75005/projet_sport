@@ -54,7 +54,7 @@ class EventController extends Controller
                 $events->persist($event);
                 $events->flush();
 
-                return $this->render("base.html.twig",  $data);
+                return $this->redirectToRoute('index');
     }
 
     public function create_event_view(Request $request)

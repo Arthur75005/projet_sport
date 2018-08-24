@@ -2,6 +2,11 @@ index:
     path: /
     controller: App\Controller\HomeController::home
 
+marker:
+    path: /marker
+    controller: App\Controller\HomeController::marker
+    methods: [POST]
+
 register:
     path: /register
     controller: App\Controller\LoginController::postRegister

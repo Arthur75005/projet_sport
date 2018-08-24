@@ -1566,7 +1566,7 @@
         
         h3.header_w3layouts_agile {
             font-size: 3.5em;
-            color: #262c38;
+            color: #ff3c41;
             letter-spacing: 1px;
             font-weight: 400;
         }
@@ -1578,7 +1578,7 @@
         .banner_bottom_in {
             text-align: center;
             margin: 0 auto;
-            width: 60%;
+            width: 100%;
         }
         
         .banner_bottom_in p {
@@ -1682,7 +1682,7 @@
         
         .services {
             padding: 7em 0;
-            background: #ff3c41;
+            background: #222;
         }
         
         .icon_info span {
@@ -1727,10 +1727,6 @@
         
         .grid_info_main:nth-child(3) {
             margin-top: 10em;
-        }
-        
-        .grid_info.second {
-            margin-top: 1.5em;
         }
         /*-- //services --*/
         
@@ -2567,6 +2563,7 @@ background: #428bca;
             }
             h3.header_w3layouts_agile {
                 font-size: 3em;
+                color: #ff3c41;
             }
         }
         
