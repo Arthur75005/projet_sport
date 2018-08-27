@@ -2,15 +2,30 @@
 <!--banner Slider starts Here-->
 <div class="top-bar_sub_w3ls_agileits">
     <h6>
-        Projet Sportif
+       Projet Omnisport
     </h6>
     <div class="search">
         <h5>
         {% if user == null %}
-            <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
+            <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">Connecte toi pour organiser un evenement </a>
         {% else %}
-            <a class="sign" href="/profile"  data-target="#myModal2">Hey {{ user.prenom }}</a>
-            <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+            <a class="sign" href="/profile"  data-target="#myModal2"><li class="dropdown" style="list-style-type:none;">
+									<a href="#" class="dropdown-toggle sign " data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Hey {{ user.prenom }}
+										<span class="fa fa-angle-down"></span>
+									</a>
+									<ul class="dropdown-menu" >
+										<li>
+											<a class="create-event"  href="{{ path('create_event')}}">Creez votre event</a>
+										</li> 
+                                        <li>
+                                            <a class="profil" href="{{path('profile')}}">Modifier mon profil</a>
+                                        </li>
+										<li>
+											<a class="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+										</li>
+                                        
+                                    </ul>
+            
         {% endif %}
         </h5>
         <div class="cd-main-header_w3layouts_agile">
@@ -51,10 +66,7 @@
                     <nav>
                         <ul class="top_nav">
                             <li>
-                                <a href="{{path('create_event')}}">Organiser votre evenement</a>
-                            </li>
-                            <li>
-                                <a href="{{path('contact')}}">Contact</a>
+                                <a href="{{path('contact')}}">Nous contacter</a>
                             </li>
                         </ul>
                     </nav>
@@ -102,7 +114,8 @@
         <form class="col-sm-12" id="searchForm">
             <div class="form-group col-sm-4 col-sm-offset-4 nospace">
                 <div class="input-group input-group-lg">
-                  <input type="text" class="form-control" name="search_city" id="autocomplete" placeholder="Enter your address" onFocus="initAutocomplete();" required>
+                
+                  <input type="text" class="form-control" name="search_city" id="autocomplete" placeholder="Entre la ville ou tu veux rejoindre un evenement" onFocus="initAutocomplete();" required>
                     <span class="input-group-btn"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Rechercher</button></span>
                 </div>
             </div>

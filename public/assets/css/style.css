@@ -286,6 +286,8 @@
         
         .dropdown-menu {
             background-color: #fff;
+            padding-right: 15%;
+            padding-left: 7%;
         }
         
         ul.top_nav li {
@@ -318,6 +320,7 @@
             font-size: 15px;
             text-transform: capitalize;
             letter-spacing: 1px;
+            list-style-type: none;
             border: none !important;
         }
         
@@ -338,7 +341,7 @@
         .dropdown-menu>li>a:hover,
         .dropdown-menu>li>a:focus {
             color: #333;
-            background-color: #ff3c41;
+            background-color: #fff;
             border: none !important;
         }
         /*-- //nav --*/
@@ -360,8 +363,20 @@
             letter-spacing: 1px;
         }
         
-        #logout {
-            color: #e4e6e6;
+        .create-event {
+            color: #333;
+            font-size: 1.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 10%;
+        }
+        
+        .profil {
+            text-align: center;
+        }
+        
+        .logout {
+            color: #333;
             font-size: 1.2em;
             font-weight: 700;
             letter-spacing: 1px;
@@ -1013,6 +1028,7 @@
         
         .login-form {
             margin: 1em 0 0.5em;
+            padding: 1% 10%;
         }
         
         .login-m_page_img img {
@@ -1559,13 +1575,11 @@
             margin-top: 4em;
         }
         
-        .banner_bottom {
-            padding: 7em 0;
-        }
+       
         
         h3.header_w3layouts_agile {
             font-size: 3.5em;
-            color: #262c38;
+            color: #ff3c41;
             letter-spacing: 1px;
             font-weight: 400;
         }
@@ -1681,7 +1695,7 @@
         
         .services {
             padding: 7em 0;
-            background: #ff3c41;
+            background: #222;
         }
         
         .icon_info span {
@@ -1727,11 +1741,6 @@
         .grid_info_main:nth-child(3) {
             margin-top: 10em;
         }
-        
-        .grid_info.second {
-            margin-top: 1.5em;
-        }
-        /*-- //services --*/
         
         .top_spl_courses {
             padding: 7em 0;
@@ -2200,12 +2209,12 @@ background: #428bca;
         /*-- /inner_banner --*/
         
         .inner_banner {
-            background: url(../images/inner.jpg) no-repeat 0px 0px;
+            background: url(../images/banniere-omnisport.jpg) no-repeat 0px 0px;
             background-size: cover;
             -webkit-background-size: cover;
             -o-background-size: cover;
             -ms-background-size: cover;
-            min-height: 160px;
+            min-height: 300px;
         }
         
         .services-breadcrumb {
@@ -2933,6 +2942,9 @@ background: #428bca;
             ul.dropdown-menu li {
                 margin: 0;
             }
+            .dropdown {
+                list-style-type: none;
+            }
             .dropdown-menu {
                 background-color: #f3f3f3;
                 border-radius: 0;
@@ -3508,4 +3520,5 @@ background: #428bca;
                 min-height: 265px;
             }
         }
+        /*--//responsive--*/
         /*--//responsive--*/

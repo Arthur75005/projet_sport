@@ -78,6 +78,7 @@ class LoginController extends Controller
         {
             return $this->returnJson(array("User is already use!"), 401);      
         }
+        dump($user);
 
     }
 
