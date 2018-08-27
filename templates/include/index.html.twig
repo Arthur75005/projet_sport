@@ -129,6 +129,7 @@
 </div>
 {% block scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
     <script type="text/javascript">
         let geocoder;
         let map;
@@ -271,8 +272,8 @@
             });
         });
     </script>
-
     <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD42HD93hlHe0cVHdokra7uy69eZqI3HUg&libraries=places&callback=initialiserCarte" async defer></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
     {% endblock %}
