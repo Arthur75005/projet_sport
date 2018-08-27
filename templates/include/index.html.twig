@@ -173,13 +173,29 @@
                     geocodePlaceId(place.place_id);
                     addMarkerToMaps(markers.data);
                     //$("#tableau").append("<tr><td> " markers.event_name +  "</td><td " markers.prenom +"</td><td " markers.type_event +"</td><td " markers.zone+"</td><td " markers.categories+ "</td><td " markers.date_event   "</td><tr>");
-                    console.log(markers.data);
+                    console.log(markers);
                 })
             })
         }
 
 
+        function addMarkerToTableau(data) {
+            $("#tableau").html("");
+            data.map(function(location, i) {
+                let contentString = '<tr>'+
+                '<td class="bdwT-0 text-center">'+data[i].event_name+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].prenom+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].type_event+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].zone+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].categories+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].date_event+'</td>'+
+                '</tr>';
+                $("#tableau").append(contentString)
+            })
+        }
+
         function addMarkerToMaps(data) {
+            addMarkerToTableau(data);
             // Create an array of alphabetical characters used to label the markers.
             var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
