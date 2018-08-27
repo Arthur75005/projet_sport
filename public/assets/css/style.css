@@ -1591,7 +1591,7 @@
         .banner_bottom_in {
             text-align: center;
             margin: 0 auto;
-            width: 60%;
+            width: 100%;
         }
         
         .banner_bottom_in p {
@@ -1741,6 +1741,7 @@
         .grid_info_main:nth-child(3) {
             margin-top: 10em;
         }
+
         
         .top_spl_courses {
             padding: 7em 0;
@@ -2003,6 +2004,11 @@ background: #428bca;
         
         .test_img_info {
             text-align: left;
+        }
+        
+        #profile {
+            margin-bottom: 5%;
+            margin-top: 3%;
         }
         /**
   MEDIA QUERIES
@@ -2570,6 +2576,7 @@ background: #428bca;
             }
             h3.header_w3layouts_agile {
                 font-size: 3em;
+                color: #ff3c41;
             }
         }
         

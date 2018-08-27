@@ -33,6 +33,7 @@
 
     <div class="top-bar_sub_w3ls_agileits">
         <h6>
+
             Projet Omnisport
         </h6>
         <div class="search">
@@ -58,6 +59,7 @@
                                     </ul>
             
         {% endif %}
+
             </h5>
             <div class="cd-main-header_w3layouts_agile">
                 {#
@@ -254,12 +256,15 @@
                 <h3 class="sign">Ou se deroule votre evenement :</h3>
                 <div>
                     <form method="post" id="create-event">
+
                         <input type="text" class="form-control" name="zone" id="zone" placeholder="Lieux de l'evenement" onFocus="initAutocomplete();" required="">
+
                         <div class="form-group">
                             <label for="nom">Donner un nom à votre evenement :</label>
                             <input type="text" class="form-control text-center" id="name" name="name" placeholder="Entrer un nom d'evenement">
                         </div>
                         <select class="login-form" name="type_event" id="type_event" required="">
+
                             <option value="seul" >Seul</option>
                             <option value="equipe" selected>Equipe</option>
                          </select>
@@ -272,17 +277,19 @@
                             </select>
                         <input type="date" name="date_event" id="date_event" placeholder="Date de l'événement" required="" style="padding: 1%;">
                         <span class="input-group-btn c"><button class="btn btn-danger" value="map" type="submit" style=" text-center; margin-top: 5%;" id="btn-search-city">Créez évenement </button></span>
+
                         <input type="hidden" name="longitude" id="longitude">
                         <input type="hidden" name="latitude" id="latitude">
 
 
                     </form>
                 </div>
-               
+
 
             </div>
         </div>
         <div class="clearfix " style="margin-bottom:5%;"></div>
+
 
         <!--//contact-->
         <!--/footer-->
@@ -296,6 +303,7 @@
                                 <a href="{{path('index')}}">Accueil</a>
                             </li>
                             <li>
+
                                 <a href="{{path('index')}}">Chercher un évenement</a>
                             </li>
                             <li>
@@ -305,12 +313,15 @@
                             <li>
                                 <a href="{{path('contact')}}">Contact</a>
                             </li>
+
                         </ul>
 
                         <div class="clearfix"></div>
                     </div>
                     <div class="col-md-4 social-icons">
+
                         <h6> Connecte-toi avec nous </h6>
+
                         <a class="facebook" href="https://www.facebook.com/">
                             <span class="fa fa-facebook"></span>
                         </a>
@@ -328,6 +339,7 @@
 
                 </div>
             </div>
+
         <div class="copy">
             <h2 class="footer-logo">
                 <a href="index.html">Projet Omnisport
@@ -340,6 +352,7 @@
             <div class="clearfix"></div>
         </div>
         </div>
+
         <!--/footer -->
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

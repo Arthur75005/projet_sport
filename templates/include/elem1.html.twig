@@ -15,33 +15,40 @@
             <div class="signin-form profile join-fm">
 
                 <h3 class="sign">Rejoindre un evenement :</h3>
-                                       <div class="table-responsive p-20">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="bdwT-0" name="user">Utilisateur</th>
-                                                        <th class="bdwT-0">Type d'événement</th>
-                                                        <th class="bdwT-0">Zone</th>
-                                                        <th class="bdwT-0">Catégorie</th>
-                                                        <th class="bdwT-0">Date</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {# {% for theUser in users %}
-                                                    <tr>
-                                                        <td class="fw-600">{{ theUser.prenom}}</td>
-                                                        <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">{{ theUser.nom }}</span></td>
-                                                        <td>{{ theUser.email }}</td>
-                                                        <td><span class="text-success">{{ theUser.departement }}</span></td>
-                                                    </tr>
-                                                    {% endfor %} #}
-                                                </tbody>
-                                            </table>
-                                        </div>
+
+                <div class="table-responsive p-20">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="bdwT-0 text-center">Nom</th>
+                                <th class="bdwT-0 text-center">Utilisateur</th>
+                                <th class="bdwT-0 text-center">Type event</th>
+                                <th class="bdwT-0 text-center">Zone</th>
+                                <th class="bdwT-0 text-center">Categorie</th>
+                                <th class="bdwT-0 text-center">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableau">
+                            {# {% for theEvent in events %}
+                            <tr>
+                                <td class="fw-600">{{ theEvent.event_name}}</td>
+                                <td>{{ theEvent.prenom }}</td>
+                                <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">{{ theEvent.type_event }}</span></td>
+                                <td>{{ theEvent.zone }}</td>
+                                <td><span class="text-success">{{ theEvent.categories }}</span></td>
+                                <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">{{ theEvent.date_event|date("d/m/Y") }}</span></td>
+                            </tr>
+                            {% endfor %} #}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
 <!--//banner_bottom-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 {% block scripts %} {% endblock %}

@@ -47,4 +47,19 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllEvents( $zone = null)
+    { 
+        $conn = $this->getEntityManager()->getConnection();
+
+        $query = 'SELECT e.id, prenom, type_event, zone, date_event, categories, longitude as lng, latitude as lat, event_name
+            FROM event e, user u
+            WHERE e.user_id > u.id';
+        if( $zone != null)
+            $query .= " AND zone LIKE '%$zone%'";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+    
+        // returns an array of Product objects
+        return $stmt->fetchAll();
+    }
 }

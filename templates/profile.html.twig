@@ -18,6 +18,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<link href="{{ absolute_url(asset('assets/css/bootstrap.css')) }}" rel='stylesheet' type='text/css' />
 	<link href="{{ absolute_url(asset('assets/css/style.css')) }}" rel='stylesheet' type='text/css' />
 	<link href="{{ absolute_url(asset('assets/css/contact.css')) }}" rel='stylesheet' type='text/css' />
@@ -66,11 +68,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul> #}
             <!-- cd-header_w3layouts_agile-buttons -->
         </div>
-        <div id="cd-search" class="cd-search">
-            <form action="#" method="post">
-                <input name="Search" type="search" placeholder="Click enter after typing...">
-            </form>
-        </div>
     </div>
     <div class="clearfix"> </div>
 </div>
@@ -103,7 +100,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a href="{{path('index')}}">Accueil</a>
 								</li>
 								<li>
-									<a href="{{path('contact')}}">Contact</a>
+
+									<a href="{{path('contact')}}">Contactez nous</a>
+
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Evenements
@@ -129,6 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--//top-bar-->
 		</header>
 	</div>
+
 	<div class="services-breadcrumb">
 		<div class="inner_breadcrumb">
 
@@ -141,127 +141,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 	</div>
-	<!--//inner_banner-->
-       <form method="post" action="" class="text-center">
-  <div  class="form-group">
-    <label for="prenom">prenom</label>
-    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Enter pseudo">
-  </div>
-  <div  class="form-group">
-    <label for="nom">nom</label>
-    <input type="text" class="form-control" id="nom" name="nom" placeholder="Enter pseudo">
-  </div>
 
-  <div class="form-group">
-    <label for="inputTelephone">Telephone</label>
-    <input type="text" class="form-control" id="phone" name="phone" placeholder="Votre numero">
+	<!--//inner_banner-->
+<p id="confirm"></p>
+<form method="post" action="" id="profile" class="col-4 offset-4 mx-auto  text-center">
+  <div  class="form-group">
+    <label for="prenom">Prénom</label>
+    <input type="text" class="form-control text-center" id="prenom" name="prenom" value="{{ user.prenom }}" placeholder="Enter pseudo">
+  </div>
+  <div  class="form-group">
+    <label for="nom">Nom</label>
+    <input type="text" class="form-control text-center" id="nom" name="nom" value="{{ user.nom }}" placeholder="Enter pseudo">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com">
+    <label for="inputTelephone">Téléphone</label>
+    <input type="text" class="form-control text-center" id="phone" name="phone" value="{{ user.phone }}" placeholder="Votre numero">
   </div>
     <div class="form-group">
       <label for="inputCity">Ville</label>
-      <input type="text" class="form-control" id="ville" name="ville">
+      <input type="text" class="form-control text-center" id="ville" name="ville" value="{{ user.ville }}">
+      <input type="hidden" class="form-control" id="id" name="id" value="{{ user.id }}">
     </div>
-  <button type="submit" class="btn btn-dark col-md-12">Modifier</button>
+  <button type="submit" class="btn btn-dark col-md-12 ">Modifier</button>
 </form>
-
 	<!-- //inner_content -->
-
-	<!-- Modal1 -->
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header_w3layouts_agile">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-					<div class="signin-form profile">
-
-						<div class="login-m_page_img">
-
-							<img src="images/model.jpg" alt=" " class="img-responsive" />
-
-						</div>
-						<div class="login-m_page">
-							<h3 class="sign">Sign In</h3>
-							<div class="login-form">
-								<form action="#" method="post">
-									<input type="email" name="email" placeholder="E-mail" required="">
-									<input type="password" name="password" placeholder="Password" required="">
-									<div class="tp">
-										<input type="submit" value="Sign In">
-									</div>
-								</form>
-							</div>
-							<div class="login-social-grids">
-								<ul>
-									<li>
-										<a href="#">
-											<i class="fa fa-facebook"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-twitter"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-rss"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<p>
-								<a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a>
-							</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //Modal1 -->
-	<!-- Modal2 -->
-	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header_w3layouts_agile">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-					<div class="signin-form profile">
-
-						<div class="login-m_page_img">
-
-							<img src="images/model.jpg" alt=" " class="img-responsive" />
-
-						</div>
-						<div class="login-m_page">
-							<h3 class="sign">Sign Up</h3>
-							<div class="login-form">
-								<form action="#" method="post">
-									<input type="text" name="name" placeholder="Username" required="">
-									<input type="email" name="email" placeholder="Email" required="">
-									<input type="password" name="password" placeholder="Password" id="password1" required="">
-									<input type="password" name="password" placeholder="Confirm Password" id="password2" required="">
-									<input type="submit" value="Sign Up">
-								</form>
-							</div>
-							<p>
-								<a href="#"> By clicking Sign up, I agree to your terms</a>
-							</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //Modal2 -->
 	<!--/footer-->
 	<div class="contact-footer">
 		<div class="bottom-social">
@@ -385,6 +288,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
 	<script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
+        <script>
+        $(document).ready(function() {
+            $("form").submit(function(e) {
+                e.preventDefault();
+                let isVide = false;
+                for (let i = 0; i < $("#profile input").length; i++) {
+                    if ($("#profile input").eq(i).val().length < 1)
+                        isVide = true;
+
+                }
+                if (!isVide) {
+                    let data = $(this).serialize();
+                    $.post("/profile", data, function(data) {
+                        $("#confirm").html("<div class='text-center alert alert-success'>Le profile à bien été modifier!<a href='{{path('index')}}'><br>retourner à l'accueil</a></div>");               
+                    });
+                } else
+                    alert("input not value !!");
+
+            })
+        })
+    </script>
 	
 
 

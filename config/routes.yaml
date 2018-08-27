@@ -2,6 +2,11 @@ index:
     path: /
     controller: App\Controller\HomeController::home
 
+marker:
+    path: /marker
+    controller: App\Controller\HomeController::marker
+    methods: [POST]
+
 register:
     path: /register
     controller: App\Controller\LoginController::postRegister
@@ -27,14 +32,20 @@ create_event:
   methods: [GET]
 
 
-
 profile:
   path: /profile
   controller: App\Controller\ProfileController::profile
+  methods: [GET]
+
+profile_post:
+  path: /profile
+  controller: App\Controller\ProfileController::editProfile
+  methods: [POST]
 
 editProfile : 
-    path: /profile
-    controller: App\Controller\UserController::editProfile
+    path: /profile2
+    controller: App\Controller\ProfileController::editProfile
+    methods: [POST]
 
 
 

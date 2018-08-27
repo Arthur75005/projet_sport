@@ -21,19 +21,28 @@ class ProfileController Extends Controller
     {
         $user = $this->getUser();
         if( $user ){
-            $data = array("user" => array("prenom" => $user->getPrenom(), "nom" => $user->getNom()));
+            $data = array("user" => array(
+                "id" => $user->getId(), 
+                "prenom" => $user->getPrenom(), 
+                "nom" => $user->getNom(), 
+                "phone" => $user->getPhone(), 
+                "email" => $user->getEmail(), 
+                "ville" => $user->getDepartement()
+            ));
         } else {
-            $data = array("user" => null);
+            return $this->redirectToRoute('register');
         }
+        dump($data);
 
         return $this->render("profile.html.twig", $data);
 
     }
 
-    public function editProfile($user,Request $request, UserPasswordEncoderInterface $encoder)
+    public function editProfile(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find($user);
+        
+        $user = $em->getRepository(User::class)->find($request->get("id"));
     
         if (!$user) {
             throw $this->createNotFoundException(
@@ -43,15 +52,19 @@ class ProfileController Extends Controller
     
         $user->setPrenom($request->get("prenom"));
         $user->setNom($request->get("nom"));
-        $user->setemail($request->get("email"));
         $user->setPhone($request->get("phone"));
         $user->setDepartement($request->get("ville"));
+
         $em->persist($user);
         $em->flush();
+        
     
-        return $this->redirectToRoute('profile.html.twig', [
-            'id' => $user->getId()
-        ]);
+        return $this->returnJson(array("User modifier"), 201);
+    }
+
+    private function returnJson($data, $statusCode)
+    {
+        return new Response (json_encode($data), $statusCode, array("Content-Type" => "application/json") );
     }
 
 }

@@ -114,8 +114,11 @@
         <form class="col-sm-12" id="searchForm">
             <div class="form-group col-sm-4 col-sm-offset-4 nospace">
                 <div class="input-group input-group-lg">
-                
-                  <input type="text" class="form-control" name="search_city" id="autocomplete" placeholder="Entre la ville ou tu veux rejoindre un evenement" onFocus="initAutocomplete();" required>
+
+                  <input type="text" class="form-control" name="search_city" id="autocomplete" placeholder="Enter your address" onFocus="initAutocomplete();" required>
+                  <input type="hidden" name="longitude" id="longitude">
+                  <input type="hidden" name="latitude" id="latitude">
+
                     <span class="input-group-btn"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Rechercher</button></span>
                 </div>
             </div>
@@ -125,164 +128,151 @@
     </div>
 </div>
 {% block scripts %}
-{# Autocomplete google api #}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-        var geocoder;
-        var map;
-        var geocoder = new google.maps.Geocoder;
-        var infowindow = new google.maps.InfoWindow;
+        let geocoder;
+        let map;
+        let infowindow;
+        let placeSearch, autocomplete;
+        let componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            administrative_area_level_1: 'short_name',
+            country: 'long_name',
+            postal_code: 'short_name'
+        };
 
-        // initialisation de la carte Google Map de départ
-        function initialiserCarte() {
-            geocoder = new google.maps.Geocoder();
-            // Ici j'ai mis la latitude et longitude du vieux Port de Marseille pour centrer la carte de départ
-            var latlng = new google.maps.LatLng(48.7736641, 1.979039);
-            var mapOptions = {
-                    zoom: 14,
-                    center: latlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                // map-canvas est le conteneur HTML de la carte Google Map
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    // initialisation de la carte Google Map de départ
+    function initialiserCarte() {
+        //console.log("OOOKKKK")
+        geocoder = new google.maps.Geocoder();
+        // Ici j'ai mis la latitude et longitude de Trappes pour centrer la carte de départ
+        let latlng = new google.maps.LatLng(48.7736641, 1.979039);
+        let mapOptions = {
+                zoom: 14,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            // map-canvas est le conteneur HTML de la carte Google Map
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        
+        geocoder = new google.maps.Geocoder;
+        infowindow = new google.maps.InfoWindow;
+    }
+
+        // Prediction de Google
+        function initAutocomplete() {
+            // Create the autocomplete object, restricting the search to geographical
+            // location types.
+            autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */
+                (document.getElementById('autocomplete')), {
+                    types: ['geocode']
+                });
+
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        // Validation du prediction de Google par l'utilisateur
+        function fillInAddress() {
+            // Get the place details from the autocomplete object and scroll on map.
+            let place = autocomplete.getPlace();
+            $("#searchForm").submit(function(e){
+                e.preventDefault();
+                $.post("/marker", "zone="+place.vicinity, function(markers){
+                    initialiserCarte();
+                    geocodePlaceId(place.place_id);
+                    addMarkerToMaps(markers.data);
+                    //$("#tableau").append("<tr><td> " markers.event_name +  "</td><td " markers.prenom +"</td><td " markers.type_event +"</td><td " markers.zone+"</td><td " markers.categories+ "</td><td " markers.date_event   "</td><tr>");
+                    console.log(markers);
+                })
+            })
         }
 
 
-        function TrouverAdresse() {
+        function addMarkerToTableau(data) {
+            $("#tableau").html("");
+            data.map(function(location, i) {
+                let contentString = '<tr>'+
+                '<td class="bdwT-0 text-center">'+data[i].event_name+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].prenom+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].type_event+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].zone+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].categories+'</td>'+
+                '<td class="bdwT-0 text-center">'+data[i].date_event+'</td>'+
+                '</tr>';
+                $("#tableau").append(contentString)
+            })
+        }
 
-            // Récupération de l'adresse tapée dans le formulaire
-            var adresse = document.getElementById('autocomplete').value;
-            geocoder.geocode({
-                'autocomplete': adresse
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
+        function addMarkerToMaps(data) {
+            addMarkerToTableau(data);
+            // Create an array of alphabetical characters used to label the markers.
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            var markers = data.map(function(location, i) {
+                var contentString = '<div id="content">'+
+                '<h1 id="firstHeading" class="firstHeading">'+data[i].event_name+'</h1>'+
+                '<p>Adresse de L\'evement :</p>'+
+                '<p>'+data[i].zone+'</p>'+
+                '<p>Date de l\'evenement :</p>'+
+                '<p>'+data[i].date_event+'</p>'+
+                '</div>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                var mark = new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+                mark.addListener('click', function() {
+                    infowindow.open(map, mark);
+                });
+                return mark;
+            });
+
+            // Add a marker clusterer to manage the markers.
+            let markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            scrollMaps()
+        }
+
+        function scrollMaps(){
+            $('html, body').animate({
+                scrollTop: $("#titre").offset().top
+            }, 1200);
+        }
+
+        function geocodePlaceId(placeId) {
+            geocoder.geocode({'placeId': placeId}, function(results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    map.setZoom(11);
                     map.setCenter(results[0].geometry.location);
-                    // Récupération des coordonnées GPS du lieu tapé dans le formulaire
-                    var strposition = results[0].geometry.location + "";
-                    strposition = strposition.replace('(', '');
-                    strposition = strposition.replace(')', '');
-                    // Affichage des coordonnées dans le <span>
-                    document.getElementById('text_latlng').innerHTML = 'Coordonnées : ' + strposition;
-                    // Création du marqueur du lieu (épingle)
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
                 } else {
-                    alert('Adresse introuvable: ' + status);
+                window.alert('No results found');
                 }
-
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
             });
         }
 
-		$("#searchForm").submit(function(e){
-			e.preventDefault();
-			TrouverAdresse();
-		})
-		
-		
-            // This example displays an address form, using the autocomplete feature
-            // of the Google Places API to help users fill in the information.
-
-            // This example requires the Places library. Include the libraries=places
-            // parameter when you first load the API. For example:
-
-
-            var placeSearch, autocomplete;
-            var componentForm = {
-                street_number: 'short_name',
-                route: 'long_name',
-                locality: 'long_name',
-                administrative_area_level_1: 'short_name',
-                country: 'long_name',
-                postal_code: 'short_name'
-            };
-
-            function initAutocomplete() {
-                // Create the autocomplete object, restricting the search to geographical
-                // location types.
-                autocomplete = new google.maps.places.Autocomplete(
-                    /** @type {!HTMLInputElement} */
-                    (document.getElementById('autocomplete')), {
-                        types: ['geocode']
-                    });
-
-                // When the user selects an address from the dropdown, populate the address
-                // fields in the form.
-                autocomplete.addListener('place_changed', fillInAddress);
-            }
-
-            function fillInAddress() {
-                // Get the place details from the autocomplete object and scroll on map.
-            let place = autocomplete.getPlace();
-            $("#searchForm").submit(function(e){
-            e.preventDefault();
-			geocodePlaceId(place.place_id)
-     $('html, body').animate({
-         scrollTop: $("#titre").offset().top
-     }, 1200);
-        })
-
-            }
-
-
-            // Bias the autocomplete object to the user's geographical location,
-            // as supplied by the browser's 'navigator.geolocation' object.
-            function myGeolocate() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var geolocation = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        var circle = new google.maps.Circle({
-                            center: geolocation,
-                            radius: position.coords.accuracy
-                        });
-                        autocomplete.setBounds(circle.getBounds());
-                    });
-                }
-            }
-
-			// This function is called when the user clicks the UI button requesting
-			// a geocode of a place ID.
-			function geocodePlaceId(placeId) {
-				geocoder.geocode({'placeId': placeId}, function(results, status) {
-				if (status === 'OK') {
-					if (results[0]) {
-					map.setZoom(11);
-					map.setCenter(results[0].geometry.location);
-					var marker = new google.maps.Marker({
-						map: map,
-						position: results[0].geometry.location
-					});
-					infowindow.setContent(results[0].formatted_address);
-					infowindow.open(map, marker);
-					} else {
-					window.alert('No results found');
-					}
-				} else {
-					window.alert('Geocoder failed due to: ' + status);
-				}
-				});
-			}
-
-			//------------------------------------------------------------------------------------------------------------------------------------------
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(e) {
-					e.preventDefault();
-					$('html,body').animate({
-						scrolltop: $("#map-canvas").offset().top
-					}, 900);
-				});
-				
-				$().UItoTop({
-					easingType: 'easeOutQuart'
-				});
-			});
+        //------------------------------------------------------------------------------------------------------------------------------------------
+        jQuery(document).ready(function($) {            
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+        });
     </script>
+
     <script type="text/javascript" src="{{ absolute_url(asset('assets/js/bootstrap.js')) }}"></script>
-
-
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD42HD93hlHe0cVHdokra7uy69eZqI3HUg&libraries=places&callback=initialiserCarte" async defer></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     {% endblock %}

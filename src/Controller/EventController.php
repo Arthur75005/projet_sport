@@ -26,12 +26,17 @@ class EventController extends Controller
 
     public function create_event_post(Request $request)
     {
+
         $user = $this->getUser();
         if( $user ){
             $data = array("user" => array("prenom" => $user->getPrenom(), "nom" => $user->getNom()));
         } else {
-            $data = array("user" => null);
+
+            return $this->redirectToRoute('register');
         }
+
+        
+
 
         $events = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -42,6 +47,7 @@ class EventController extends Controller
             $event->setEventName($request->get("name"));
             $event->setLongitude($request->get("longitude"));
             $event->setLatitude($request->get("latitude"));
+
             $event->setDateEvent(new \DateTime($request->get("date_event")));
             $event->setCategories($request->get("categories"));
             $event->setUser($user);
@@ -50,7 +56,9 @@ class EventController extends Controller
                 $events->persist($event);
                 $events->flush();
 
-                return $this->render("base.html.twig",  $data);
+
+                return $this->redirectToRoute('index');
+
     }
 
     public function create_event_view(Request $request)
