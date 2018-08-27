@@ -2,12 +2,12 @@
 <html>
 
 <head>
-	<title>Fettle a sports Category Bootstrap responsive WebTemplate | Contact :: w3layouts</title>
+<title>{% block title %}Omnisport Project {% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="Fettle a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -28,18 +28,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-<div class="top-bar_sub_w3ls_agileits">
-						<h6>
-							<a class="navbar-brand" href="{{path('index')}}">Projet Sport
-							</a>
-						</h6>
+
+ <div class="top-bar_sub_w3ls_agileits">
+    <h6>
+        Projet Omnisport
+    </h6>
     <div class="search">
         <h5>
-        {% if user == null %}
+                {% if user == null %}
             <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
         {% else %}
-            <a class="sign" href="/profile"  data-target="#myModal2">Hey {{ user.prenom }}</a>
-            <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+            <a class="sign" href="/profile"  data-target="#myModal2"><li class="dropdown" style="list-style-type:none;">
+									<a href="#" class="dropdown-toggle sign " data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Hey {{ user.prenom }}
+										<span class="fa fa-angle-down"></span>
+									</a>
+									<ul class="dropdown-menu" >
+										<li>
+											<a class="create-event"  href="{{ path('create_event')}}">Creez votre event</a>
+										</li>  
+										<li>
+                                            <a class="profil" href="{{path('profile')}}">Modifier mon profil</a>
+                                        </li>
+										<li>
+											<a class="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+										</li>
+                                       
+                                    </ul>
+            
+
         {% endif %}
         </h5>
         <div class="cd-main-header_w3layouts_agile">
@@ -57,9 +73,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input name="Search" type="search" placeholder="Click enter after typing...">
             </form>
         </div>
+
+
     </div>
     <div class="clearfix"> </div>
 </div>
+
+
 	<!--/top-bar-->
 	<div class="header_w3layouts_agile-main inner_banner">
 		<header class="header" id="home">
@@ -74,8 +94,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
+						
 						<h1>
-							<a class="navbar-brand" href="{{path('index')}}">Projet Sport
+							<a class="navbar-brand" href="{{path('index')}}">Projet Omnisport
 								<span>Un évenement sportif à porter de main</span>
 							</a>
 						</h1>
@@ -85,19 +106,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a href="index.html">Accueil</a>
+									<a href="{{path('index')}}">Accueil</a>
 								</li>
-								<li>
-									<a href="about.html">Nous connaitre</a>
-								</li>
+								
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Evenements
 										<span class="fa fa-angle-down"></span>
 									</a>
 									<ul class="dropdown-menu">
-										<li>
-											<a href="{{ path('create_event')}}">Créez votre evenement</a>
-										</li>
+										
 										<li>
 											<a href="services.html">Chercher un evenement</a>
 										</li>
@@ -121,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<ul class="short">
 				<li>
-					<a href="{{path('index')}}">Home</a>
+					<a href="{{path('index')}}">Accueil</a>
 					<span>|</span>
 				</li>
 				<li>Contact</li>
@@ -143,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="login-m_page_img">
 
-							<img src="images/model.jpg" alt=" " class="img-responsive" />
+							<img src="images/imagesport.jpg" alt=" " class="img-responsive" />
 
 						</div>
 						<div class="login-m_page">
@@ -301,27 +318,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="{{path('index')}}">Accueil</a>
 						</li>
 						<li>
-							<a href="about.html">Nous connaitre</a>
-						</li>
-						<li>
 							<a href="services.html">Créez votre évement</a>
 						</li>
 						<li>
-							<a href="gallery.html">Chercher un évenement</a>
+							<a href="{{path('index')}}">Chercher un évenement</a>
 						</li>
-						<li>
-							<a href="{{path('contact')}}">Contact</a>
-						</li>
-						<li>
-							<a href="404.html">Evenements</a>
-						</li>
-						
 					</ul>
 					
 					<div class="clearfix"></div>
 				</div>
 				<div class="col-md-4 social-icons">
-					<h6> Connectez vous avec </h6>
+					<h6> Connecte-toi avec nous </h6>
 					<a class="facebook" href="https://www.facebook.com/">
 						<span class="fa fa-facebook"></span>
 					</a>
@@ -341,12 +348,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="{{path('index')}}">Projet Sport
+				<a href="{{path('index')}}">Projet Omnisport
 					<span>Un évenement sportif à porter de main</span>
 				</a>
 			</h2>
-			<p>© 2018 Projet Sport. All rights reserved | Design by
-				Mohammed et Arthur.</a>
+			<p>© 2018 Projet Omnisport. All rights reserved | Design by
+				Mohammed et Arthur.
 			</p>
 			<div class="clearfix"></div>
 		</div>

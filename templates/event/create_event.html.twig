@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>Projet Sport By Arthur et Mohammed</title>
+    <title>Projet Omnisport By Arthur et Mohammed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="keywords" content="Fettle a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
       Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <script type="application/x-javascript">
         addEventListener("load", function() {
@@ -33,14 +33,33 @@
 
     <div class="top-bar_sub_w3ls_agileits">
         <h6>
-            Projet Sportif
+
+            Projet Omnisport
         </h6>
         <div class="search">
             <h5>
-                {% if user == null %}
-                <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a> {% else %}
-                <a class="sign" href="" data-toggle="modal" data-target="#myModal2">Hey {{ user.prenom }}</a>
-                <a id="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a> {% endif %}
+                    {% if user == null %}
+            <a class="sign" href="#" data-toggle="modal" data-target="#myModal2">User Login</a>
+        {% else %}
+            <a class="sign" href="/profile"  data-target="#myModal2"><li class="dropdown" style="list-style-type:none;">
+									<a href="#" class="dropdown-toggle sign " data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Hey {{ user.prenom }}
+										<span class="fa fa-angle-down"></span>
+									</a>
+									<ul class="dropdown-menu" >
+										<li>
+											<a class="create-event"  href="{{ path('index')}}">Chercher un event</a>
+										</li> 
+                                        <li>
+                                            <a class="profil" href="{{path('profile')}}">Modifier mon profil</a>
+                                        </li>
+										<li>
+											<a class="logout" href="/logout">Logout<i class="fas fa-power-off"></i></a>
+										</li>
+                                        
+                                    </ul>
+            
+        {% endif %}
+
             </h5>
             <div class="cd-main-header_w3layouts_agile">
                 {#
@@ -81,7 +100,7 @@
 						</button>
 
                         <h1>
-                            <a class="navbar-brand" href="{{path('index')}}">Projet Sport
+                            <a class="navbar-brand" href="{{path('index')}}">Projet Omnisport
 								<span>Un évenement sportif à porter de main</span>
 							</a>
                         </h1>
@@ -98,18 +117,9 @@
                                 <li>
                                     <a href="{{path('contact')}}">Nous contacter</a>
                                 </li>
-                                <li>
-                                    <a href="about.html">Nous connaitre</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">Evenements
-										<span class="fa fa-angle-down"></span>
-									</a>
+                                
                             </ul>
-                            </li>
-
-
-                            </ul>
+                            
                         </nav>
                     </div>
                 </nav>
@@ -124,7 +134,7 @@
 
             <ul class="short">
                 <li>
-                    <a href="{{path('index')}}">Home</a>
+                    <a href="{{path('index')}}">Accueil</a>
                     <span>|</span>
                 </li>
                 <li>
@@ -232,7 +242,7 @@
     <div class="banner_bottom">
 
         <div class="tittle_head">
-            <h3 class="header_w3layouts_agile">Creez votre evenement</h3>
+            <h3 class="header_w3layouts_agile text-center">Creez votre evenement</h3>
         </div>
 
         <div class="col-md-7 yoga-video" data-aos="flip-left">
@@ -246,37 +256,40 @@
                 <h3 class="sign">Ou se deroule votre evenement :</h3>
                 <div>
                     <form method="post" id="create-event">
-                        <input type="text" class="form-control" name="zone" id="zone" placeholder="Enter your address" onFocus="initAutocomplete();" required="">
+
+                        <input type="text" class="form-control" name="zone" id="zone" placeholder="Lieux de l'evenement" onFocus="initAutocomplete();" required="">
+
                         <div class="form-group">
                             <label for="nom">Donner un nom à votre evenement :</label>
                             <input type="text" class="form-control text-center" id="name" name="name" placeholder="Entrer un nom d'evenement">
                         </div>
                         <select class="login-form" name="type_event" id="type_event" required="">
-                            <option value="seul" selected>Seul</option>
+
+                            <option value="seul" >Seul</option>
                             <option value="equipe" selected>Equipe</option>
                          </select>
-                        <select class="login-form" name="categories" id="categories" required="">
+                        <select class="login-form"  name="categories" id="categories" required="">
                             <option value="football" selected>Football</option>
-                            <option value="basketball">Basketball</option>
-                            <option value="handball">Handball</option>
-                            <option value="tennis">Tennis</option>
-                            <option value="randonée">Randonée</option>
+                            <option value="basketball" >Basketball</option>
+                            <option value="handball" >Handball</option>
+                            <option value="tennis" >Tennis</option>
+                            <option value="randonée" >Randonée</option>
                             </select>
                         <input type="date" name="date_event" id="date_event" placeholder="Date de l'événement" required="" style="padding: 1%;">
-                        <span class="input-group-btn c"><button class="btn btn-danger" value="map" type="submit" style="padding: 11px text-center" id="btn-search-city">Créez évenement </button></span>
+                        <span class="input-group-btn c"><button class="btn btn-danger" value="map" type="submit" style=" text-center; margin-top: 5%;" id="btn-search-city">Créez évenement </button></span>
+
                         <input type="hidden" name="longitude" id="longitude">
                         <input type="hidden" name="latitude" id="latitude">
 
 
                     </form>
                 </div>
-                <p>
-                    <a href="#"> By clicking Sign up, I agree to your terms</a>
-                </p>
+
 
             </div>
         </div>
-        <div class="clearfix" style="margin-bottom:5%;"></div>
+        <div class="clearfix " style="margin-bottom:5%;"></div>
+
 
         <!--//contact-->
         <!--/footer-->
@@ -290,19 +303,15 @@
                                 <a href="{{path('index')}}">Accueil</a>
                             </li>
                             <li>
-                                <a href="about.html">Nous connaitre</a>
+
+                                <a href="{{path('index')}}">Chercher un évenement</a>
                             </li>
                             <li>
-                                <a href="services.html">Créez votre évement</a>
+                                <a href="{{path('create_event')}}">Créez votre évement</a>
                             </li>
-                            <li>
-                                <a href="gallery.html">Chercher un évenement</a>
-                            </li>
+                            
                             <li>
                                 <a href="{{path('contact')}}">Contact</a>
-                            </li>
-                            <li>
-                                <a href="404.html">Evenements</a>
                             </li>
 
                         </ul>
@@ -310,7 +319,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="col-md-4 social-icons">
-                        <h6> Connectez vous avec </h6>
+
+                        <h6> Connecte-toi avec nous </h6>
+
                         <a class="facebook" href="https://www.facebook.com/">
                             <span class="fa fa-facebook"></span>
                         </a>
@@ -328,17 +339,20 @@
 
                 </div>
             </div>
-            <div class="copy">
-                <h2 class="footer-logo">
-                    <a href="{{path('index')}}">Projet Sport
-					<span>Un évenement sportif à porter de main</span>
+
+        <div class="copy">
+            <h2 class="footer-logo">
+                <a href="index.html">Projet Omnisport
+					<span>Un événement sportif a portée de main</span>
 				</a>
-                </h2>
-                <p>© 2018 Projet Sport. All rights reserved | Design by Mohammed et Arthur.</a>
-                </p>
-                <div class="clearfix"></div>
-            </div>
+            </h2>
+            <p>© 2018 Projet Omnisport. All rights reserved | Design by
+				Mohammed et Arthur.
+			</p>
+            <div class="clearfix"></div>
         </div>
+        </div>
+
         <!--/footer -->
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

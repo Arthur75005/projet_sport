@@ -12,6 +12,7 @@ class ContactController Extends Controller
 
     public function contact()
     {
+
         $user = $this->getUser();
         if( $user ){
             $data = array("user" => array("prenom" => $user->getPrenom(), "nom" => $user->getNom()));
@@ -19,7 +20,8 @@ class ContactController Extends Controller
             $data = array("user" => null);
         }
 
-        return $this->render("contact.html.twig", $data);
+             
+            return $this->render("contact.html.twig", $data);
 
     }
 }

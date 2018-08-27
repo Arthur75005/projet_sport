@@ -31,10 +31,12 @@ class EventController extends Controller
         if( $user ){
             $data = array("user" => array("prenom" => $user->getPrenom(), "nom" => $user->getNom()));
         } else {
+
             return $this->redirectToRoute('register');
         }
 
         
+
 
         $events = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -54,7 +56,9 @@ class EventController extends Controller
                 $events->persist($event);
                 $events->flush();
 
+
                 return $this->redirectToRoute('index');
+
     }
 
     public function create_event_view(Request $request)
